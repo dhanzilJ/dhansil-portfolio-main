@@ -488,6 +488,7 @@ img {
     column-gap: 2rem;
   }
 }
+@media screen and (min-width: 992px) {
   .bd-grid {
     margin-left: auto;
     margin-right: auto;
@@ -501,36 +502,30 @@ img {
 
   /* Center portrait videos */
 .portrait-videos {
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    max-width: 600px; /* Adjust based on your desired width */
     margin: 0 auto;
-    padding: 0 15px;
 }
 
 .portrait-videos a {
-    display: block;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .portrait-videos img {
-    width: 100%;
-    max-width: 350px;
-    height: auto;
-    display: block;
+    max-height: 500px; /* Adjust based on your needs */
+    width: auto;
+    object-fit: contain;
 }
 
+/* Consistent path slashes (optional) */
 .work__container img {
     width: 100%;
     height: auto;
     display: block;
 }
 
-@media (max-width: 768px) {
-    .portrait-videos {
-        flex-direction: column;
-        align-items: center;
-    }
 }
 
 
