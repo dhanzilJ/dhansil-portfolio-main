@@ -488,7 +488,7 @@ img {
     column-gap: 2rem;
   }
 }
-/* ===== DESKTOP OPTIMIZATION (992px+) ===== */
+/* ===== MEDIA QUERIES (992px+) ===== */
 @media screen and (min-width: 992px) {
   .bd-grid {
     margin-left: auto;
@@ -503,38 +503,51 @@ img {
     width: 450px;
   }
 
-  /* Centering logic for Portrait GIFs */
+  /* --- PORTRAIT VIDEOS FIX --- */
   .portrait-videos {
-    display: flex;
-    flex-wrap: wrap;       /* Allows GIFs to wrap to a new row */
-    justify-content: center; /* Centers the LAST item if it's alone */
-    gap: 2rem;
-    max-width: 900px;      /* Increased to fit two side-by-side comfortably */
+    display: flex !important; /* Overrides the grid to allow centering */
+    flex-wrap: wrap;           /* Allows items to move to the next line */
+    justify-content: center;   /* Centers the last item if it's alone */
+    gap: 2rem;                 /* Matches your grid spacing */
+    max-width: 1024px;
     margin: 0 auto;
   }
 
   .portrait-videos a {
-    display: block;        /* Essential gap killer */
-    flex: 0 1 calc(50% - 1rem); /* Forces 2 per row, but allows centering */
-    min-width: 300px;      /* Keeps them from getting too skinny */
-    line-height: 0;        /* Removes bottom white space */
+    display: block;            /* Kills the inline gap */
+    flex: 0 1 calc(33.33% - 2rem); /* Fits 3 per row on very wide screens */
+    min-width: 280px;          /* Forces wrapping if screen gets narrower */
+    line-height: 0;            /* Removes white space under GIF */
   }
 
-  .portrait-videos img {
-    width: 100%;
-    height: 500px;         /* Uniform height for perfect alignment */
-    object-fit: cover;     /* Crops GIFs to fit the uniform box */
-    display: block;        /* Final gap killer */
-    border-radius: 0.5rem;
+  /* This ensures the whole GIF is visible with no sides or top cut off */
+.portrait-videos img {
+  width: 100%;       /* Fills the container width */
+  height: auto;      /* Lets the height adjust naturally */
+  display: block;    /* Removes the gap at the bottom */
+  border-radius: 0.5rem;
+  box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
+  
+  /* Remove object-fit: cover; as it causes the cropping */
+  object-fit: contain; 
+}
   }
 
-  /* Landscape consistency */
-  .work__container img {
+  /* --- LANDSCAPE VIDEOS FIX --- */
+  .work__container:not(.portrait-videos) img {
     width: 100%;
     height: auto;
-    display: block;
+    display: block;            /* Kills gaps for landscape too */
+    border-radius: 0.5rem;
   }
-} /* Closing bracket for the 992px media query */
+} /* Final closing bracket for Media Query */
+
+
+
+
+
+
+
 
 
 
