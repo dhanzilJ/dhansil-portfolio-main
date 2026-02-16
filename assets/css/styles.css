@@ -488,52 +488,53 @@ img {
     column-gap: 2rem;
   }
 }
+/* ===== DESKTOP OPTIMIZATION (992px+) ===== */
 @media screen and (min-width: 992px) {
   .bd-grid {
     margin-left: auto;
     margin-right: auto;
   }
+
   .home {
     padding: 10rem 0 2rem;
   }
+
   .home__img {
     width: 450px;
   }
 
-  /* Center portrait videos */
-.portrait-videos {
-    justify-content: center;
-    max-width: 600px; /* Adjust based on your desired width */
-    margin: 0 auto;
-}
-
-.portrait-videos a {
+  /* Centering logic for Portrait GIFs */
+  .portrait-videos {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;       /* Allows GIFs to wrap to a new row */
+    justify-content: center; /* Centers the LAST item if it's alone */
+    gap: 2rem;
+    max-width: 900px;      /* Increased to fit two side-by-side comfortably */
+    margin: 0 auto;
+  }
+
+  .portrait-videos a {
+    display: block;        /* Essential gap killer */
+    flex: 0 1 calc(50% - 1rem); /* Forces 2 per row, but allows centering */
+    min-width: 300px;      /* Keeps them from getting too skinny */
+    line-height: 0;        /* Removes bottom white space */
+  }
+
+  .portrait-videos img {
     width: 100%;
-}
+    height: 500px;         /* Uniform height for perfect alignment */
+    object-fit: cover;     /* Crops GIFs to fit the uniform box */
+    display: block;        /* Final gap killer */
+    border-radius: 0.5rem;
+  }
 
-.portrait-videos img {
-    max-height: 500px; /* Adjust based on your needs */
-    width: auto;
-    object-fit: contain;
-}
-
-/* Consistent path slashes (optional) */
-.work__container img {
+  /* Landscape consistency */
+  .work__container img {
     width: 100%;
     height: auto;
     display: block;
-}
-
-}
-
-
-
-
-
-
-
+  }
+} /* Closing bracket for the 992px media query */
 
 
 
