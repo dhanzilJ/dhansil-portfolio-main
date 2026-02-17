@@ -503,44 +503,81 @@ img {
     width: 450px;
   }
 
-  /* --- PORTRAIT VIDEOS FIX --- */
+ /* ============================================================
+   PORTFOLIO LAYOUT FIX — Landscape + Portrait Videos
+   Paste this into your style.css, replacing the old section
+   ============================================================ */
+
+
+/* ── 1. SHARED IMAGE STYLES (all screens) ── */
+.work__container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0.5rem;
+  box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
+}
+
+.work__container a {
+  display: block;
+  line-height: 0; /* removes white-space gap under GIFs */
+}
+
+
+/* ── 2. PORTRAIT VIDEOS — base style (all screens) ── */
+.portrait-videos {
+  display: flex !important; /* overrides bd-grid */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.portrait-videos a {
+  flex: 0 1 calc(33.33% - 2rem); /* 3 per row on wide screens */
+  min-width: 260px;
+}
+
+.portrait-videos img {
+  object-fit: contain; /* shows full portrait frame, no cropping */
+}
+
+
+/* ── 3. TABLET: portrait view (~768px and below) ── */
+@media screen and (max-width: 768px) {
+
+  /* Landscape grid → 1 column, full width */
+  .work__container.bd-grid:not(.portrait-videos) {
+    grid-template-columns: 1fr;
+  }
+
+  /* Portrait flex → 2 per row */
+  .portrait-videos a {
+    flex: 0 1 calc(50% - 1rem);
+    min-width: 200px;
+  }
+}
+
+
+/* ── 4. MOBILE PORTRAIT: (~480px and below) ── */
+@media screen and (max-width: 480px) {
+
+  /* Portrait flex → 1 per row, centred */
   .portrait-videos {
-    display: flex !important; /* Overrides the grid to allow centering */
-    flex-wrap: wrap;           /* Allows items to move to the next line */
-    justify-content: center;   /* Centers the last item if it's alone */
-    gap: 2rem;                 /* Matches your grid spacing */
-    max-width: 1024px;
-    margin: 0 auto;
+    gap: 1.25rem;
   }
 
   .portrait-videos a {
-    display: block;            /* Kills the inline gap */
-    flex: 0 1 calc(33.33% - 2rem); /* Fits 3 per row on very wide screens */
-    min-width: 280px;          /* Forces wrapping if screen gets narrower */
-    line-height: 0;            /* Removes white space under GIF */
+    flex: 0 1 85%;   /* single column, slightly inset for breathing room */
+    min-width: unset;
   }
 
-  /* This ensures the whole GIF is visible with no sides or top cut off */
-.portrait-videos img {
-  width: 100%;       /* Fills the container width */
-  height: auto;      /* Lets the height adjust naturally */
-  display: block;    /* Removes the gap at the bottom */
-  border-radius: 0.5rem;
-  box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
-  
-  /* Remove object-fit: cover; as it causes the cropping */
-  object-fit: contain; 
+  /* Landscape grid stays 1 column */
+  .work__container.bd-grid:not(.portrait-videos) {
+    grid-template-columns: 1fr;
+  }
 }
-  }
-
-  /* --- LANDSCAPE VIDEOS FIX --- */
-  .work__container:not(.portrait-videos) img {
-    width: 100%;
-    height: auto;
-    display: block;            /* Kills gaps for landscape too */
-    border-radius: 0.5rem;
-  }
-} /* Final closing bracket for Media Query */
 
 
 
