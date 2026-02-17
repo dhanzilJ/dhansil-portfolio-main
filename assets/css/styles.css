@@ -600,3 +600,49 @@ img {
 
 
 
+
+/* ── PORTRAIT & LANDSCAPE VIDEO FIX ── */
+.work__container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0.5rem;
+  box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
+}
+.work__container a {
+  display: block;
+  line-height: 0;
+}
+.portrait-videos {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+.portrait-videos a {
+  flex: 0 1 calc(33.33% - 2rem);
+  min-width: 260px;
+}
+.portrait-videos img {
+  object-fit: contain;
+}
+@media screen and (max-width: 768px) {
+  .work__container.bd-grid:not(.portrait-videos) {
+    grid-template-columns: 1fr;
+  }
+  .portrait-videos a {
+    flex: 0 1 calc(50% - 1rem);
+    min-width: 200px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .portrait-videos {
+    gap: 1.25rem;
+  }
+  .portrait-videos a {
+    flex: 0 1 85%;
+    min-width: unset;
+  }
+}
