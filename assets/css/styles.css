@@ -316,8 +316,6 @@ img {
   height: 2rem;
 }
 
-
-
 .skills__img {
   border-radius: 0.5rem;
 }
@@ -488,28 +486,26 @@ img {
     column-gap: 2rem;
   }
 }
+
 /* ===== MEDIA QUERIES (992px+) ===== */
 @media screen and (min-width: 992px) {
   .bd-grid {
     margin-left: auto;
     margin-right: auto;
   }
-
   .home {
     padding: 10rem 0 2rem;
   }
-
   .home__img {
     width: 450px;
   }
+}
 
- /* ============================================================
-   PORTFOLIO LAYOUT FIX — Landscape + Portrait Videos
-   Paste this into your style.css, replacing the old section
+/* ============================================================
+   PORTFOLIO LAYOUT FIX â€” Landscape + Portrait Videos
    ============================================================ */
 
-
-/* ── 1. SHARED IMAGE STYLES (all screens) ── */
+/* â”€â”€ 1. SHARED IMAGE STYLES (all screens) â”€â”€ */
 .work__container img {
   width: 100%;
   height: auto;
@@ -518,101 +514,12 @@ img {
   box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
 }
 
-.work__container a {
-  display: block;
-  line-height: 0; /* removes white-space gap under GIFs */
-}
-
-
-/* ── 2. PORTRAIT VIDEOS — base style (all screens) ── */
-.portrait-videos {
-  display: flex !important; /* overrides bd-grid */
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  max-width: 1024px;
-  margin: 0 auto;
-}
-
-.portrait-videos a {
-  flex: 0 1 calc(33.33% - 2rem); /* 3 per row on wide screens */
-  min-width: 260px;
-}
-
-.portrait-videos img {
-  object-fit: contain; /* shows full portrait frame, no cropping */
-}
-
-
-/* ── 3. TABLET: portrait view (~768px and below) ── */
-@media screen and (max-width: 768px) {
-
-  /* Landscape grid → 1 column, full width */
-  .work__container.bd-grid:not(.portrait-videos) {
-    grid-template-columns: 1fr;
-  }
-
-  /* Portrait flex → 2 per row */
-  .portrait-videos a {
-    flex: 0 1 calc(50% - 1rem);
-    min-width: 200px;
-  }
-}
-
-
-/* ── 4. MOBILE PORTRAIT: (~480px and below) ── */
-@media screen and (max-width: 480px) {
-
-  /* Portrait flex → 1 per row, centred */
-  .portrait-videos {
-    gap: 1.25rem;
-  }
-
-  .portrait-videos a {
-    flex: 0 1 85%;   /* single column, slightly inset for breathing room */
-    min-width: unset;
-  }
-
-  /* Landscape grid stays 1 column */
-  .work__container.bd-grid:not(.portrait-videos) {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ── PORTRAIT & LANDSCAPE VIDEO FIX ── */
-.work__container img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 0.5rem;
-  box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
-}
 .work__container a {
   display: block;
   line-height: 0;
 }
+
+/* â”€â”€ 2. PORTRAIT VIDEOS â€” base style (all screens) â”€â”€ */
 .portrait-videos {
   display: flex !important;
   flex-wrap: wrap;
@@ -621,13 +528,17 @@ img {
   max-width: 1024px;
   margin: 0 auto;
 }
+
 .portrait-videos a {
   flex: 0 1 calc(33.33% - 2rem);
   min-width: 260px;
 }
+
 .portrait-videos img {
   object-fit: contain;
 }
+
+/* â”€â”€ 3. TABLET: portrait view (~768px and below) â”€â”€ */
 @media screen and (max-width: 768px) {
   .work__container.bd-grid:not(.portrait-videos) {
     grid-template-columns: 1fr;
@@ -637,6 +548,8 @@ img {
     min-width: 200px;
   }
 }
+
+/* â”€â”€ 4. MOBILE PORTRAIT: (~480px and below) â”€â”€ */
 @media screen and (max-width: 480px) {
   .portrait-videos {
     gap: 1.25rem;
@@ -644,5 +557,8 @@ img {
   .portrait-videos a {
     flex: 0 1 85%;
     min-width: unset;
+  }
+  .work__container.bd-grid:not(.portrait-videos) {
+    grid-template-columns: 1fr;
   }
 }
